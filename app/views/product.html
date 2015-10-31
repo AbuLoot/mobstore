@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eshop</title>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/styles.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <nav class="nav-top">
+      <div class="container">
+        <ul class="list-inline pull-left">
+          <li><a href="#">Главная</a></li>
+          <li><a href="#">О магазине</a></li>
+          <li><a href="#">Каталог</a></li>
+          <li><a href="#">Доставка</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+        <p class="pull-right hidden-xs">
+          <span>+7 (123) 456-7890</span>,
+          <span>+7 (123) 456-7890</span>
+        </p>
+      </div>
+    </nav>
+
+    <div class="container wrapper-shadow">
+      <header class="row bg-header">
+        <div class="col-md-6">
+          <div class="clearfix"></div>
+          <h1 class="logo"><a href="#">GOshop</a></h1>
+        </div>
+        <div class="col-md-3">
+          <br>
+          <form>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3">
+          <br>
+          <div class="dropdown">
+            <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              <span class="glyphicon glyphicon-shopping-cart"></span> Корзина
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+            </ul>
+          </div>
+          <br>
+        </div>
+      </header>
+
+      <!-- Catalog -->
+      <nav class="navbar navbar-default hidden-xs">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-globe"></span></a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbar-collapse-2">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Смартфоны <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">iPhone</a></li>
+                  <li><a href="#">Samsung</a></li>
+                  <li><a href="#">HTC</a></li>
+                  <li><a href="#">NOKIA</a></li>
+                  <li><a href="#">Lenova</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Планшеты <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">iPad</a></li>
+                  <li><a href="#">Samsung</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Аксессуары <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Аккумуляторы</a></li>
+                  <li><a href="#">Зарядное устройство</a></li>
+                  <li><a href="#">Наушники</a></li>
+                  <li><a href="#">Другое</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Отзывы</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="row">
+        <div class="col-md-12">
+          <ol class="breadcrumb">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Смартфоны</a></li>
+            <li><a href="#">Apple</a></li>
+            <li class="active">Apple iPhone 6 Plus</li>
+          </ol>
+
+          <div class="col-md-6">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <div class="thumbnail">
+                    <img src="bower_components/bootstrap/dist/img/SmartPhones/Apple/1.jpg" class="img-responsive">
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumbnail">
+                    <img src="bower_components/bootstrap/dist/img/SmartPhones/Apple/2.jpg" class="img-responsive">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ol class="list-inline">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="col-md-2 active">
+                <a href="#" class="thumbnail">
+                  <img src="bower_components/bootstrap/dist/img/SmartPhones/Apple/1.jpg" class="img-responsive">
+                </a>
+              </li>
+              <li data-target="#carousel-example-generic" data-slide-to="1" class="col-md-2">
+                <a href="#" class="thumbnail">
+                  <img src="bower_components/bootstrap/dist/img/SmartPhones/Apple/2.jpg" class="img-responsive">
+                </a>
+              </li>
+            </ol>
+          </div>
+          <div class="col-md-6">
+            <h2>Apple iPhone 6 Plus</h2>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Производитель:</td>
+                  <td>Apple</td>
+                </tr>
+                <tr>
+                  <td>Наличие:</td>
+                  <td>Есть в наличии</td>
+                </tr>
+                <tr>
+                  <td>Количество:</td>
+                  <td><input type="number" class="form-control input-sm" value="1"></td>
+                </tr>
+                <tr>
+                  <td>Цена:</td>
+                  <td>140 000тг</td>
+                </tr>
+              </tbody>
+            </table>
+            <p><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Купить</a></p>
+          </div>
+          <div class="col-md-12">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#home" aria-controls="home" data-toggle="tab">Описание</a></li>
+              <li><a href="#profile" aria-controls="profile" data-toggle="tab">Характеристики</a></li>
+              <li><a href="#messages" aria-controls="messages" data-toggle="tab">Комментарии</a></li>
+            </ul>
+            <br>
+            <div class="tab-content">
+              <div class="tab-pane active" id="home">
+                <p>Смартфон Apple (цветовые варианты white, black, silver, gold) – стоимость194000. Уникальный смартфон от известного на весь мир производителя Apple – это высокое качество по разумной стоимости. Бесперебойная работа устройства обеспечивается инновационной разработкой - операционной системой iOs7. Кроме этого, фантастическое качество снимков благодаря реалистичной вспышке порадует даже самого требовательного фотографа. Процессор повышенной производительности обуславливает высокую скорость работы всех приложений, как базовых, так и скачанных на смартфон Apple пользователем самостоятельно.</p>
+              </div>
+              <div class="tab-pane" id="profile">
+                <div class="table-resposive">
+                  <table class="table table-condensed table-striped table-hover">
+                    <tbody>
+                      <tr>
+                        <th colspan="2">Общие характеристики</th>
+                      </tr>
+                      <tr>
+                        <th>Тип</th>
+                        <td>смартфон</td>
+                      </tr>
+                      <tr>
+                        <th>Операционная система</th>
+                        <td>iOS 8</td>
+                      </tr>
+                      <tr>
+                        <th>Тип корпуса</th>
+                        <td>классический</td>
+                      </tr>
+                      <tr>
+                        <th>Материал корпуса</th>
+                        <td>алюминий</td>
+                      </tr>
+                      <tr>
+                        <th>Управление</th>
+                        <td>механические кнопки</td>
+                      </tr>
+                      <tr>
+                        <th>Тип SIM-карты</th>
+                        <td>nano SIM</td>
+                      </tr>
+                      <tr>
+                        <th>Количество SIM-карт</th>
+                        <td>1</td>
+                      </tr>
+                      <tr>
+                        <th>Вес</th>
+                        <td>172 г</td>
+                      </tr>
+                      <tr>
+                        <th>Размеры (ШxВxТ)</th>
+                        <td>77.8x158.1x7.1 мм</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Экран</th>
+                      </tr>
+                      <tr>
+                        <th>Тип экрана</th>
+                        <td>цветной IPS, сенсорный</td>
+                      </tr>
+                      <tr>
+                        <th>Тип сенсорного экрана</th>
+                        <td>мультитач, емкостный</td>
+                      </tr>
+                      <tr>
+                        <th>Диагональ</th>
+                        <td>5.5 дюйм.</td>
+                      </tr>
+                      <tr>
+                        <th>Размер изображения</th>
+                        <td>1080x1920</td>
+                      </tr>
+                      <tr>
+                        <th>Число пикселей на дюйм (PPI)</th>
+                        <td>401</td>
+                      </tr>
+                      <tr>
+                        <th>Автоматический поворот экрана</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Звонки</th>
+                      </tr>
+                      <tr>
+                        <th>Тип мелодий</th>
+                        <td>полифонические, MP3-мелодии</td>
+                      </tr>
+                      <tr>
+                        <th>Виброзвонок</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Мультимедийные возможности</th>
+                      </tr>
+                      <tr>
+                        <th>Фотокамера</th>
+                        <td>8 млн пикс., встроенная вспышка</td>
+                      </tr>
+                      <tr>
+                        <th>Функции камеры</th>
+                        <td>автофокус, оптическая стабилизация</td>
+                      </tr>
+                      <tr>
+                        <th>Распознавание</th>
+                        <td>лиц</td>
+                      </tr>
+                      <tr>
+                        <th>Запись видеороликов</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Макс. разрешение видео</th>
+                        <td>1920x1080</td>
+                      </tr>
+                      <tr>
+                        <th>Макс. частота кадров видео</th>
+                        <td>60 кадров/с</td>
+                      </tr>
+                      <tr>
+                        <th>Geo Tagging</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Фронтальная камера</th>
+                        <td>есть, 1.2 млн пикс.</td>
+                      </tr>
+                      <tr>
+                        <th>Аудио</th>
+                        <td>MP3, AAC, WAV</td>
+                      </tr>
+                      <tr>
+                        <th>Диктофон</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Разъем для наушников</th>
+                        <td>3.5 мм</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Связь</th>
+                      </tr>
+                      <tr>
+                        <th>Стандарт</th>
+                        <td>GSM 900/1800/1900, 3G, LTE, LTE Advanced Cat. 4</td>
+                      </tr>
+                      <tr>
+                        <th>Поддержка диапазонов LTE</th>
+                        <td>bands 1, 2, 3, 4, 5, 7, 8, 13, 17, 18, 19, 20, 25, 26, 28, 29</td>
+                      </tr>
+                      <tr>
+                        <th>Доступ в интернет</th>
+                        <td>WAP, GPRS, EDGE, HSDPA, HSUPA, HSPA+, DC HSDPA</td>
+                      </tr>
+                      <tr>
+                        <th>Интерфейсы</th>
+                        <td>Wi-Fi 802.11ac, Bluetooth 4.0, USB, NFC</td>
+                      </tr>
+                      <tr>
+                        <th>Зарядка от USB</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Спутниковая навигация</th>
+                        <td>GPS/ГЛОНАСС</td>
+                      </tr>
+                      <tr>
+                        <th>Cистема A-GPS</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Поддержка протоколов</th>
+                        <td>POP/SMTP, HTML</td>
+                      </tr>
+                      <tr>
+                        <th>Модем</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Синхронизация с компьютером</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Память и процессор</th>
+                      </tr>
+                      <tr>
+                        <th>Процессор</th>
+                        <td>Apple A8, 1400 МГц</td>
+                      </tr>
+                      <tr>
+                        <th>Количество ядер процессора</th>
+                        <td>2</td>
+                      </tr>
+                      <tr>
+                        <th>Видеопроцессор</th>
+                        <td>PowerVR GX6450</td>
+                      </tr>
+                      <tr>
+                        <th>Объем встроенной памяти</th>
+                        <td>128 Гб</td>
+                      </tr>
+                      <tr>
+                        <th>Объем оперативной памяти</th>
+                        <td>1 Гб</td>
+                      </tr>
+                      <tr>
+                        <th>Слот карт памяти</th>
+                        <td>отсутствует</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Сообщения</th>
+                      </tr>
+                      <tr>
+                        <th>MMS</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Питание</th>
+                      </tr>
+                      <tr>
+                        <th>Тип аккумулятора</th>
+                        <td>Li-Ion</td>
+                      </tr>
+                      <tr>
+                        <th>Аккумулятор</th>
+                        <td>несъемный</td>
+                      </tr>
+                      <tr>
+                        <th>Время разговора</th>
+                        <td>24 ч</td>
+                      </tr>
+                      <tr>
+                        <th>Время ожидания</th>
+                        <td>384 ч</td>
+                      </tr>
+                      <tr>
+                        <th>Время работы в режиме прослушивания музыки</th>
+                        <td>80 ч</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Другие функции</th>
+                      </tr>
+                      <tr>
+                        <th>Громкая связь (встроенный динамик)</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Управление</th>
+                        <td>голосовой набор, голосовое</td>
+                      </tr>
+                      <tr>
+                        <th>Автодозвон</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Датчики</th>
+                        <td>освещенности, приближения, гироскоп, компас, барометр, считывание отпечатка пальца</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Записная книжка и органайзер</th>
+                      </tr>
+                      <tr>
+                        <th>Поиск по книжке</th>
+                        <td>есть</td>
+                      </tr>
+                      <tr>
+                        <th>Органайзер</th>
+                        <td>будильник, калькулятор, планировщик задач</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Дополнительная информация</th>
+                      </tr>
+                      <tr>
+                        <th>Особенности</th>
+                        <td>доступен в трех цветах: серебристый, золотой, серый; режим замедленной съемки - 240 кадров в секунду; коннектор - Lightning; система мобильных платежей Pay; процессор A8 64-bit + сопроцессор M8</td>
+                      </tr>
+                      <tr>
+                        <th>Дата анонсирования</th>
+                        <td>2014-09-09</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane" id="messages">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img src="bower_components/bootstrap/dist/img/1.jpg" class="media-object" width="100">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">Middle aligned media</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img src="bower_components/bootstrap/dist/img/2.jpg" class="media-object" width="100">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">Middle aligned media</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                </div>
+                <hr>
+                <h3>Add your review</h3>
+                <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control">
+                      <option>1 star</option>
+                      <option>2 star</option>
+                      <option>3 star</option>
+                      <option>4 star</option>
+                      <option>5 star</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="3" placeholder="Review"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="column">
+            <h4>Information</h4>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="typography.html">Policy Privacy</a></li>
+              <li><a href="typography.html">Terms and Conditions</a></li>
+              <li><a href="typography.html">Shipping Methods</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="column">
+            <h4>Categories</h4>
+            <ul>
+              <li><a href="catalogue.html">Cras justo odio</a></li>
+              <li><a href="catalogue.html">Dapibus ac facilisis in</a></li>
+              <li><a href="catalogue.html">Morbi leo risus</a></li>
+              <li><a href="catalogue.html">Porta ac consectetur ac</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="column">
+            <h4>Customer Service</h4>
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="#">YM: cs_</a></li>
+              <li><a href="#">Phone: +6281234567891</a></li>
+              <li><a href="#">Email: cs.domain@domain.tld</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="column">
+            <h4>Follow Us</h4>
+            <ul class="social">
+              <li><a href="#">Google Plus</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">RSS Feed</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
