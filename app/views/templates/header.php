@@ -18,16 +18,20 @@
     <![endif]-->
   </head>
   <body>
-
-    <nav class="nav-top">
+    <br>
+    <nav>
       <div class="container">
-        <ul class="list-inline pull-left">
-          <li><a href="#">Главная</a></li>
-          <li><a href="#">О магазине</a></li>
-          <li><a href="#">Каталог</a></li>
-          <li><a href="#">Доставка</a></li>
-          <li><a href="#">Контакты</a></li>
-        </ul>
+        <?php if (empty($pages)) : ?>
+          <p>Sorry, no pages at the moment.</p>
+        <?php else: ?>
+          <ul class="list-inline pull-left">
+            <li><a href="<?= BASE_URL; ?>">Главная</a></li>
+            <?php foreach ($pages as $nav_page) : ?>
+              <li><a href="<?= BASE_URL; ?>/page.php?id=<?= $nav_page['slug']; ?>"><?= $nav_page['title']; ?></a></li>
+            <?php endforeach; ?>
+          </ul>
+        <?php endif; ?>
+
         <p class="pull-right hidden-xs">
           <span>+7 (123) 456-7890</span>,
           <span>+7 (123) 456-7890</span>
@@ -39,7 +43,7 @@
       <header class="row bg-header">
         <div class="col-md-6">
           <div class="clearfix"></div>
-          <h1 class="logo"><a href="#">MobiStore</a></h1>
+          <h1 class="logo"><a href="<?= BASE_URL; ?>">MobiStore</a></h1>
         </div>
         <div class="col-md-3">
           <br>
