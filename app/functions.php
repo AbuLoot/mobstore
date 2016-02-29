@@ -2,18 +2,98 @@
 
 function e($text)
 {
-	return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+    return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
 
-function validate_data($text, $min = 1)
+function validate_data($text, $min = 3, $max = 80)
 {
-	$notifications = [];
+    $notifications = [];
 
-	$text = trim(strip_tags($text));
+    $text = trim(strip_tags($text));
 
-	if (strlen($text) < $min) {
-		$notifications[] = '';
-	}
+    if (empty($text))
+    {
+        $notifications['empty_value'] = 'Value must not be empty';
+    }
+    elseif (strlen($text) < $min)
+    {
+        $notifications['short_value'] = 'Value must not be less than '.$min;
+    }
+    elseif (strlen($text) > $max)
+    {
+        $notifications['long_value'] = 'Value may not be greater than '.$max;
+    }
+
+    return $notifications;
+}
+
+function image_resize($src_w, $src_h, $w, $h, $file_type, $file_tmp, $path, $name)
+{
+    if ($src_w < $w AND $src_h < $h)
+    {
+        $dst_w = $src_w;
+        $dst_h = $src_h;
+        $dst_x = round(($w - $dst_w) / 2);
+        $dst_y = round(($h - $dst_h) / 2);
+        // exit('Mini:'.$dst_w.'x'.$dst_h.' x: '.$dst_x.' y: '.$dst_y);
+    }
+    elseif ($src_w == $src_h)
+    {
+        // Square
+        $dst_w = $w;
+        $dst_h = $h;
+        $dst_x = 0;
+        $dst_y = 0;
+        // exit('Square:'.$dst_w.'x'.$dst_h.' x: '.$dst_x.' y: '.$dst_y);
+    }
+    elseif ($src_w > $src_h)
+    {
+        // Lying rectangle
+        $dst_w = $w;
+        $dst_h = round($src_h * ($dst_w / $src_w));
+        $dst_x = 0;
+        $dst_y = round(($h - $dst_h) / 2);
+        // exit('Lying rectangle:'.$dst_w.'x'.$dst_h.' x: '.$dst_x.' y: '.$dst_y);
+    }
+    elseif ($src_w < $src_h)
+    {
+        // Standing rectangle
+        $dst_h = $h;
+        $dst_w = round($src_w * ($dst_h / $src_h));
+        $dst_x = round(($w - $dst_w) / 2);
+        $dst_y = 0;
+        // exit('Standing rectangle:'.$dst_w.'x'.$dst_h.' x: '.$dst_x.' y: '.$dst_y);
+    }
+
+    switch ($file_type)
+    {
+        case 'image/jpeg':
+            $dst_image = imagecreatetruecolor($w, $h);
+            $white_bg = imagecolorallocate($dst_image, 255, 255, 255);
+            imagefilledrectangle($dst_image, 0, 0, $w, $h, $white_bg);
+            $src_image = imagecreatefromjpeg($file_tmp);
+            imagecopyresampled($dst_image, $src_image, $dst_x, $dst_y, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
+            imagejpeg($dst_image, $path . '/' . $name, 90);
+            break;
+
+        case 'image/png':
+            $dst_image = imagecreatetruecolor($w, $h);
+            imagealphablending($dst_image, false);
+            imagesavealpha($dst_image, true);
+            $src_image = imagecreatefrompng($file_tmp);
+            imagecopyresampled($dst_image, $src_image, $dst_x, $dst_y, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
+            imagepng($dst_image, $path . '/' . $name, 5);
+            break;
+
+        case 'image/gif':
+            $dst_image = imagecreatetruecolor($w, $h);
+            $white_bg = imagecolorallocate($dst_image, 255, 255, 255);
+            imagefilledrectangle($dst_image, 0, 0, $w, $h, $white_bg);
+            $src_image = imagecreatefromgif($file_tmp);
+            imagecopyresampled($dst_image, $src_image, $dst_x, $dst_y, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
+            imagegif($dst_image, $path . '/' . $name);
+            break;
+    }
 }
 
 function latinize($input)

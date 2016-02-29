@@ -215,3 +215,5 @@ class Image_Driver_GD extends Image_Driver_Abstract {
     }
 
 }
+
+

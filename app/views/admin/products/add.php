@@ -17,12 +17,12 @@
     </div>
     <div class="form-group">
       <label>Images</label>
-      <input type="file" class="form-control" name="images[]"><br>
-      <input type="file" class="form-control" name="images[]"><br>
-      <input type="file" class="form-control" name="images[]"><br>
-      <input type="file" class="form-control" name="images[]"><br>
-      <input type="file" class="form-control" name="images[]"><br>
-      <input type="file" class="form-control" name="images[]">
+      <input type="file" class="form-control" name="images[]" multiple><br>
+      <input type="file" class="form-control" name="images[]" multiple><br>
+      <input type="file" class="form-control" name="images[]" multiple><br>
+      <input type="file" class="form-control" name="images[]" multiple><br>
+      <input type="file" class="form-control" name="images[]" multiple><br>
+      <input type="file" class="form-control" name="images[]" multiple>
     </div>
     <div class="form-group">
       <label for="company">Company</label>
