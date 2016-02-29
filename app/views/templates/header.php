@@ -41,7 +41,7 @@
 
     <div class="container">
       <header class="row bg-header">
-        <div class="col-md-6">
+        <div class="col-md-9">
           <div class="clearfix"></div>
           <h1 class="logo"><a href="<?= BASE_URL; ?>">MobiStore</a></h1>
         </div>
@@ -56,7 +56,7 @@
             </div>
           </form>
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
           <br>
           <div class="dropdown">
             <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -69,7 +69,7 @@
             </ul>
           </div>
           <br>
-        </div>
+        </div> -->
       </header>
 
       <!-- Menu -->
@@ -123,7 +123,6 @@
                 <li><a href="#">Другое</a></li>
               </ul>
             </li>
-            <li><a href="#">Отзывы</a></li>
           </ul>
         </div>
       </nav>

@@ -73,9 +73,10 @@ if (!empty($_POST))
     $price = $_POST['price'];
     $description = $_POST['description'];
     $characteristic = $_POST['characteristic'];
+    $status = $_POST['status'];
 
-    $sql = "INSERT INTO products (slug, title, image, images, path, category_id, company, count, price, description, characteristic)
-            VALUES (:slug, :title, :image, :images, :path, :category_id, :company, :count, :price, :description, :characteristic)";
+    $sql = "INSERT INTO products (slug, title, image, images, path, category_id, company, count, price, description, characteristic, status)
+            VALUES (:slug, :title, :image, :images, :path, :category_id, :company, :count, :price, :description, :characteristic, :status)";
 
     $insertProduct = $db->prepare($sql);
 
@@ -91,7 +92,8 @@ if (!empty($_POST))
         'count' => $count,
         'price' => $price,
         'description' => $description,
-        'characteristic' => $characteristic
+        'characteristic' => $characteristic,
+        'status' => $status
     ]);
 
     header('Location: ' . BASE_URL . '/admin/products/index.php');

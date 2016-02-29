@@ -49,10 +49,9 @@ $sql = 'SELECT id, sort_id, section_id, slug, title, meta_title, meta_descriptio
 		WHERE id = :id';
 
 $category = $db->prepare($sql);
-
 $category->execute(['id' => $_GET['id']]);
-
 $category = $category->fetch(PDO::FETCH_ASSOC);
+
 
 $sql = 'SELECT id, slug, title
 		FROM section';

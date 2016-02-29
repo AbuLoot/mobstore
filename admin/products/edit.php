@@ -14,20 +14,19 @@ if (!empty($_POST))
     $price = $_POST['price'];
     $description = $_POST['description'];
     $characteristic = $_POST['characteristic'];
+    $status = $_POST['status'];
 
     $sql = 'UPDATE products
             SET sort_id = :sort_id,
                 category_id = :category_id,
                 slug = :slug,
                 title = :title,
-                image = :image,
-                images = :images,
-                title = :title,
                 company = :company,
                 count = :count,
                 price = :price,
                 description = :description,
-                characteristic = :characteristic
+                characteristic = :characteristic,
+                status = :status
             WHERE id = :id';
 
     $updateProduct = $db->prepare($sql);
@@ -37,14 +36,13 @@ if (!empty($_POST))
         'category_id' => $category_id,
         'slug' => $slug,
         'title' => $title,
-        'image' => $image,
-        'images' => serialize($images),
         'title' => $title,
         'company' => $company,
         'count' => $count,
         'price' => $price,
         'description' => $description,
-        'characteristic' => $characteristic
+        'characteristic' => $characteristic,
+        'status' => $status
     ]);
 
     header('Location: ' . BASE_URL . '/admin/products/index.php');
@@ -56,7 +54,7 @@ if (!isset($_GET['id']))
     die();
 }
 
-$sql = 'SELECT id, sort_id, category_id, slug, title, image, images, path, company, count, price, description, characteristic
+$sql = 'SELECT id, sort_id, category_id, slug, title, image, images, path, company, count, price, description, characteristic, status
         FROM products
         WHERE id = :id';
 

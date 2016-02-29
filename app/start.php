@@ -9,9 +9,4 @@ define('VIEW_ROOT', APP_ROOT . '/views');
 $db = new PDO('mysql:host=localhost;dbname=mobistore', 'root', 'bireki');
 
 require 'functions.php';
-require 'pages.php';
-
-$sql = 'SELECT section.id, section.slug, section.title
-		FROM section';
-
-$section = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+require 'variables.php';

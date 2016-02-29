@@ -3,6 +3,7 @@
   <h2>Edit Product</h2>
 
   <form action="<?= BASE_URL ?>/admin/products/edit.php" method="POST" enctype='multipart/form-data'>
+    <input type="hidden" class="form-control" name="id" value="<?= e($product['id']) ?>">
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" class="form-control" name="title" id="title" value="<?= e($product['title']) ?>">
@@ -45,12 +46,20 @@
       <input type="number" class="form-control" name="count" id="count" value="<?= e($product['count']) ?>">
     </div>
     <div class="form-group">
+      <label for="sort_id">Number</label>
+      <input type="number" class="form-control" name="sort_id" id="sort_id" value="<?= e($product['sort_id']) ?>">
+    </div>
+    <div class="form-group">
       <label for="description">Description</label>
       <textarea class="form-control" name="description" id="description" rows="10"><?= e($product['description']) ?></textarea>
     </div>
     <div class="form-group">
       <label for="characteristic">Characteristic</label>
       <textarea class="form-control" name="characteristic" id="characteristic" rows="10"><?= e($product['characteristic']) ?></textarea>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input type="number" class="form-control" name="status" id="status" value="<?= e($product['status']) ?>">
     </div>
     <button type="submit" class="btn btn-primary">Edit</button>
   </form>

@@ -44,6 +44,10 @@
       <label for="characteristic">Characteristic</label>
       <textarea class="form-control" name="characteristic" id="characteristic" rows="10"></textarea>
     </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input type="number" class="form-control" name="status" id="status" value="1">
+    </div>
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
 
