@@ -8,6 +8,10 @@
       <input type="text" class="form-control" name="title" id="title">
     </div>
     <div class="form-group">
+      <label for="slug">Slug</label>
+      <input type="text" class="form-control" name="slug" id="slug">
+    </div>
+    <div class="form-group">
       <label for="meta_title">Meta title</label>
       <input type="text" class="form-control" name="meta_title" id="meta_title">
     </div>

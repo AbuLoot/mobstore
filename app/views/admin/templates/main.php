@@ -1,3 +1,3 @@
 	<div class="jumbotron">
-	  <h1>АсСаляму ъалайкум, Админ!</h1>
+	  <h1>AsSalyamu alaikum, Admin!</h1>
 	</div>

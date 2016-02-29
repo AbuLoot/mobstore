@@ -5,7 +5,7 @@ require '../../app/start.php';
 if (!empty($_POST))
 {
 	$title = $_POST['title'];
-	$slug = latinize($title);
+	$slug = (!empty($_POST['slug'])) ? $_POST['slug'] : latinize($_POST['title']);
 	$meta_title = $_POST['meta_title'];
 	$meta_description = $_POST['meta_description'];
 	$content = $_POST['content'];
@@ -25,5 +25,7 @@ if (!empty($_POST))
 
 	header('Location: ' . BASE_URL . '/admin/pages/index.php');
 }
+
+$scripts = ['tinymce.php'];
 
 require VIEW_ROOT . '/admin/pages/add.php';

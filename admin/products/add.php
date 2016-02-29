@@ -48,18 +48,18 @@ if (!empty($_POST))
                         image_resize($file_width, $file_height, 252, 252, $file_type, $file_tmp, $dir_uploads, $image);
                     }
 
-                    // Create presentaion images
-                    image_resize($file_width, $file_height, 540, 540, $file_type, $file_tmp, $dir_uploads, 'present-'.$random_name);
+                    // Create mini images
+                    image_resize($file_width, $file_height, 70, 70, $file_type, $file_tmp, $dir_uploads, 'mini-'.$random_name);
 
                     // Create presentaion images
-                    image_resize($file_width, $file_height, 70, 70, $file_type, $file_tmp, $dir_uploads, 'mini-'.$random_name);
+                    image_resize($file_width, $file_height, 540, 540, $file_type, $file_tmp, $dir_uploads, 'present-'.$random_name);
 
                     // Upload origianl images
                     move_uploaded_file($file_tmp, $dir_uploads . '/original-'.$random_name);
 
                     $images[$i]['image'] = 'present-'.$random_name;
                     $images[$i]['mini_image'] = 'mini-'.$random_name;
-                    $images[$i]['orginal_image'] = 'original-'.$random_name;
+                    $images[$i]['original_image'] = 'original-'.$random_name;
                 }
             }
         }
@@ -74,8 +74,8 @@ if (!empty($_POST))
     $description = $_POST['description'];
     $characteristic = $_POST['characteristic'];
 
-    $sql = "INSERT INTO products (slug, title, image, images, path, category_id, company, count, description, characteristic)
-            VALUES (:slug, :title, :image, :images, :path, :category_id, :company, :count, :description, :characteristic)";
+    $sql = "INSERT INTO products (slug, title, image, images, path, category_id, company, count, price, description, characteristic)
+            VALUES (:slug, :title, :image, :images, :path, :category_id, :company, :count, :price, :description, :characteristic)";
 
     $insertProduct = $db->prepare($sql);
 
@@ -89,6 +89,7 @@ if (!empty($_POST))
         'title' => $title,
         'company' => $company,
         'count' => $count,
+        'price' => $price,
         'description' => $description,
         'characteristic' => $characteristic
     ]);
@@ -100,5 +101,7 @@ $sql = 'SELECT id, slug, title
         FROM categories';
 
 $categories = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+$scripts = ['tinymce.php'];
 
 require VIEW_ROOT . '/admin/products/add.php';

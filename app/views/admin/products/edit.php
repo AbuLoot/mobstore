@@ -21,30 +21,16 @@
     </div>
     <div class="form-group">
       <label>Images</label>
-      <?php $images = unserialize($product['images']); ?>
-      <input type="hidden" name="old_images" value="<?= e($product['images']) ?>">
-      <input type="hidden" name="path_images" value="<?= $product['path'] ?>">
-      <?php for ($i = 0; $i < count($images); $i++) : ?>
-        <?php if (isset($images[$i])) : ?>
-          <div class="row">
-            <div class="col-md-3">
-              <img class="img-responsive" src="<?= BASE_URL . '/uploads/' . $product['path'] . '/' . $images[$i]['mini_image']; ?>"><br>
+      <div class="row">
+        <?php $images = unserialize($product['images']); ?>
+        <?php for ($i = 0; $i < count($images); $i++) : ?>
+          <?php if (isset($images[$i])) : ?>
+            <div class="col-md-4">
+              <img class="img-responsive" src="<?= BASE_URL . '/uploads/' . $product['path'] . '/' . $images[$i]['image']; ?>"><br>
             </div>
-            <div class="col-md-9">
-              <input type="file" class="form-control" name="images[]" multiple><br>
-            </div>
-          </div>
-        <?php else : ?>
-          <div class="row">
-            <div class="col-md-3">
-              <img class="img-responsive" src="<?= BASE_URL ?>/uploads/no-image.png"><br>              
-            </div>
-            <div class="col-md-9">
-              <input type="file" class="form-control" name="images[]" multiple><br>
-            </div>
-          </div>
-        <?php endif; ?>
-      <?php endfor; ?>
+          <?php endif; ?>
+        <?php endfor; ?>
+      </div>
     </div>
     <div class="form-group">
       <label for="company">Company</label>

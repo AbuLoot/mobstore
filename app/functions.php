@@ -5,6 +5,19 @@ function e($text)
     return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
 
+function get_submenu($db, $section_id)
+{
+    $sql = 'SELECT id, slug, title
+            FROM categories
+            WHERE section_id = :id
+            ORDER BY sort_id';
+
+    $categories = $db->prepare($sql);
+    $categories->execute(['id' => $section_id]);
+
+    return $categories;
+}
+
 function validate_data($text, $min = 3, $max = 80)
 {
     $notifications = [];
@@ -23,6 +36,11 @@ function validate_data($text, $min = 3, $max = 80)
     {
         $notifications['long_value'] = 'Value may not be greater than '.$max;
     }
+    else
+    {
+        return $text;
+        exit();
+    }
 
     return $notifications;
 }
@@ -35,7 +53,6 @@ function image_resize($src_w, $src_h, $w, $h, $file_type, $file_tmp, $path, $nam
         $dst_h = $src_h;
         $dst_x = round(($w - $dst_w) / 2);
         $dst_y = round(($h - $dst_h) / 2);
-        // exit('Mini:'.$dst_w.'x'.$dst_h.' x: '.$dst_x.' y: '.$dst_y);
     }
     elseif ($src_w == $src_h)
     {
@@ -44,7 +61,6 @@ function image_resize($src_w, $src_h, $w, $h, $file_type, $file_tmp, $path, $nam
         $dst_h = $h;
         $dst_x = 0;
         $dst_y = 0;
-        // exit('Square:'.$dst_w.'x'.$dst_h.' x: '.$dst_x.' y: '.$dst_y);
     }
     elseif ($src_w > $src_h)
     {
@@ -53,7 +69,6 @@ function image_resize($src_w, $src_h, $w, $h, $file_type, $file_tmp, $path, $nam
         $dst_h = round($src_h * ($dst_w / $src_w));
         $dst_x = 0;
         $dst_y = round(($h - $dst_h) / 2);
-        // exit('Lying rectangle:'.$dst_w.'x'.$dst_h.' x: '.$dst_x.' y: '.$dst_y);
     }
     elseif ($src_w < $src_h)
     {
@@ -62,7 +77,6 @@ function image_resize($src_w, $src_h, $w, $h, $file_type, $file_tmp, $path, $nam
         $dst_w = round($src_w * ($dst_h / $src_h));
         $dst_x = round(($w - $dst_w) / 2);
         $dst_y = 0;
-        // exit('Standing rectangle:'.$dst_w.'x'.$dst_h.' x: '.$dst_x.' y: '.$dst_y);
     }
 
     switch ($file_type)
@@ -185,6 +199,7 @@ function latinize($input)
         'Ẻ' => 'E', 'Ẽ' => 'E', 'Ề' => 'E', 'Ế' => 'E', 'Ệ' => 'E', 'Ể' => 'E', 'Ễ' => 'E', 'Ị' => 'I', 'Ỉ' => 'I',
         'Ọ' => 'O', 'Ỏ' => 'O', 'Ồ' => 'O', 'Ố' => 'O', 'Ộ' => 'O', 'Ổ' => 'O', 'Ỗ' => 'O', 'Ờ' => 'O', 'Ớ' => 'O',
         'Ợ' => 'O', 'Ở' => 'O', 'Ỡ' => 'O', 'Ụ' => 'U', 'Ủ' => 'U', 'Ừ' => 'U', 'Ứ' => 'U', 'Ự' => 'U', 'Ử' => 'U',
+        ' ' => '-',
     ];
 
     $string = strtr($input, $table);

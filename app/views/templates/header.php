@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Eshop</title>
+    <title>MobiStore</title>
 
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -72,7 +72,7 @@
         </div>
       </header>
 
-      <!-- Catalog -->
+      <!-- Menu -->
       <nav class="navbar navbar-default">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
@@ -86,7 +86,18 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
           <ul class="nav navbar-nav">
-            <li class="active dropdown">
+            <?php foreach ($section as $key => $item) : ?>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $item['title'] ?> <span class="caret"></span></a>
+                <?php $categories = get_submenu($db, $item['id']); ?>
+                <ul class="dropdown-menu">
+                  <?php foreach ($categories as $category) : ?>
+                    <li><a href="<?= BASE_URL ?>/category.php?id=<?= $category['id'] ?>"><?= $category['title'] ?></a></li>
+                  <?php endforeach; ?>
+                </ul>
+              </li>
+            <?php endforeach; ?>
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Смартфоны <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">iPhone</a></li>

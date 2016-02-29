@@ -3,25 +3,8 @@
     <footer class="footer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-6">
-            <div class="column">
-              <h4>Information</h4>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-6">
-            <div class="column">
-              <h4>Categories</h4>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-6">
-            <div class="column">
-              <h4>Customer Service</h4>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-6">
-            <div class="column">
-              <h4>Follow Us</h4>
-            </div>
+          <div class="col-lg-12 col-md-12 col-sm-6">
+            
           </div>
         </div>
       </div>

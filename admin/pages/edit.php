@@ -5,8 +5,8 @@ require '../../app/start.php';
 if (!empty($_POST))
 {
 	$id = $_POST['id'];
-	$slug = $_POST['slug'];
 	$title = $_POST['title'];
+	$slug = (!empty($_POST['slug'])) ? $_POST['slug'] : latinize($_POST['title']);
 	$meta_title = $_POST['meta_title'];
 	$meta_description = $_POST['meta_description'];
 	$content = $_POST['content'];
@@ -43,9 +43,9 @@ $sql = 'SELECT id, slug, title, meta_title, meta_description, content
 		WHERE id = :id';
 
 $page = $db->prepare($sql);
-
 $page->execute(['id' => $_GET['id']]);
-
 $page = $page->fetch(PDO::FETCH_ASSOC);
+
+$scripts = ['tinymce.php'];
 
 require VIEW_ROOT . '/admin/pages/edit.php';
