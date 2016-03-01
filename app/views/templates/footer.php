@@ -1,10 +1,11 @@
 
 	  </div>
-    <footer class="footer">
+    <footer class="footer"><hr>
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-6">
-            
+          <div class="col-lg-12 col-md-12 col-sm-6"><br>
+            <p>MobiStore Copyright © 2011 - 2016. Алматы, Казахстан.</p>
+            <p><a href="#">Back to top</a></p><br>
           </div>
         </div>
       </div>

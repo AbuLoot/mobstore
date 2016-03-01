@@ -2,13 +2,13 @@
 
 require 'app/start.php';
 
-if (empty($_GET['id']))
+if (empty($_GET['slug']))
 {
 	$page = false;
 }
 else
 {
-	$slug = $_GET['id'];
+	$slug = $_GET['slug'];
 
 	$sql = "SELECT * FROM pages
 			WHERE slug = :slug
@@ -19,4 +19,4 @@ else
 	$page = $page->fetch(PDO::FETCH_ASSOC);
 }
 
-require VIEW_ROOT . '/page/show.php';
+require VIEW_ROOT . '/content/page-show.php';

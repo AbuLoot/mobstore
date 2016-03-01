@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MobiStore</title>
+    <title>MobiStore <?php if (isset($meta_title)) echo $meta_title; ?></title>
+    <meta name="author" content="issayev.adilet@gmail.com">
+    <meta name="description" content="<?php if (isset($meta_description)) echo $meta_description; ?>">
 
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -27,7 +29,7 @@
           <ul class="list-inline pull-left">
             <li><a href="<?= BASE_URL; ?>">Главная</a></li>
             <?php foreach ($pages as $nav_page) : ?>
-              <li><a href="<?= BASE_URL; ?>/page.php?id=<?= $nav_page['slug']; ?>"><?= $nav_page['title']; ?></a></li>
+              <li><a href="<?= BASE_URL; ?>/page.php?slug=<?= $nav_page['slug']; ?>"><?= $nav_page['title']; ?></a></li>
             <?php endforeach; ?>
           </ul>
         <?php endif; ?>
@@ -47,7 +49,7 @@
         </div>
         <div class="col-md-3">
           <br>
-          <form>
+          <form action="<?= BASE_URL ?>/search.php" method="get">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search">
               <span class="input-group-btn">
@@ -92,7 +94,7 @@
                 <?php $categories = get_submenu($db, $item['id']); ?>
                 <ul class="dropdown-menu">
                   <?php foreach ($categories as $category) : ?>
-                    <li><a href="<?= BASE_URL ?>/category.php?id=<?= $category['id'] ?>"><?= $category['title'] ?></a></li>
+                    <li><a href="<?= BASE_URL ?>/category.php?slug=<?= $category['slug'] ?>"><?= $category['title'] ?></a></li>
                   <?php endforeach; ?>
                 </ul>
               </li>
