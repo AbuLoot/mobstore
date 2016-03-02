@@ -36,81 +36,38 @@ function clear_data($text)
     return trim(strip_tags($text));
 }
 
-/*function validate_data($text, $min = 3, $max = 80)
+function validate($input, $input_rules)
 {
     $notifications = [];
 
-    $text = trim(strip_tags($text));
+    foreach ($input_rules as $title => $rules)
+    {
+        $array_rules = explode('|', $rules);
 
-    if (empty($text))
-    {
-        $notifications['empty_value'] = 'Value must not be empty';
-    }
-    elseif (strlen($text) < $min)
-    {
-        $notifications['short_value'] = 'Value must not be less than '.$min;
-    }
-    elseif (strlen($text) > $max)
-    {
-        $notifications['long_value'] = 'Value may not be greater than '.$max;
-    }
-
-    return $notifications;
-}
-*/
-function validate($input, $rules)
-{
-    foreach ($rules as $title => $rule)
-    {
-        $check = explode('|', $rule);
-
-        foreach ($check as $pravilo)
+        foreach ($array_rules as $item_rule)
         {
-            if (strpos('min', $pravilo))
-                list($pravilo, $min) = explode(':', $pravilo);
+            if (strpos($item_rule, 'min'))
+                list($item_rule, $min) = explode(':', $item_rule);
 
-            if (strpos('max', $pravilo))
-                list($pravilo, $max) = explode(':', $pravilo);
+            if (strpos($item_rule, 'max'))
+                list($item_rule, $max) = explode(':', $item_rule);
 
-            switch ($pravilo)
+            switch ($item_rule)
             {
                 case 'required':
                     if (empty($input[$title]))
-                        $notifications['empty_value'] = 'Value must not be empty';
+                        $notifications[$title]['empty_value'] = 'Value must not be empty';
                     break;
-                case 'integer':
-                    if (!is_int($input[$title]))
-                        $notifications['not_integer'] = 'Value must be integer';
-                    break;
-                case 'min':
+                case 'length-min':
                     if (strlen($input[$title]) < $min)
-                        $notifications['short_value'] = 'Value must not be less than '.$min;
+                        $notifications[$title]['short_value'] = 'Value must not be less than '.$min;
                     break;
-                case 'max':
+                case 'length-max':
                     if (strlen($input[$title]) > $max)
-                        $notifications['long_value'] = 'Value may not be greater than '.$max;
+                        $notifications[$title]['long_value'] = 'Value may not be greater than '.$max;
                     break;
             }
         }
-    }
-
-    exit();
-
-    $notifications = [];
-
-    $text = trim(strip_tags($text));
-
-    if (empty($text))
-    {
-        $notifications['empty_value'] = 'Value must not be empty';
-    }
-    elseif (strlen($text) < $min)
-    {
-        $notifications['short_value'] = 'Value must not be less than '.$min;
-    }
-    elseif (strlen($text) > $max)
-    {
-        $notifications['long_value'] = 'Value may not be greater than '.$max;
     }
 
     return $notifications;

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 ini_set('display_errors', 'On');
 
 define('APP_ROOT', __DIR__);

@@ -2,6 +2,8 @@
   
   <h2>Edit Product</h2>
 
+  <?php require VIEW_ROOT . '/templates/alerts.php'; ?>
+
   <form action="<?= BASE_URL ?>/admin/products/edit.php" method="POST">
     <input type="hidden" class="form-control" name="id" value="<?= e($product['id']) ?>">
     <div class="form-group">

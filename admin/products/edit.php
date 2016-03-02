@@ -5,21 +5,17 @@ require '../../app/start.php';
 if (!empty($_POST))
 {
     $notifications = validate($_POST, [
-        'category_id' => 'required|integer',
-        'title' => 'required|3|80'
+        'category_id' => 'required',
+        'title' => 'required|length-min:3|length-max:80'
     ]);
 
-    $id = $_POST['id'];
-    $sort_id = $_POST['sort_id'];
-    $category_id = $_POST['category_id'];
-    $title = $_POST['title'];
-    $slug = latinize($title);
-    $company = $_POST['company'];
-    $count = $_POST['count'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
-    $characteristic = $_POST['characteristic'];
-    $status = $_POST['status'];
+    if (count($notifications) > 0)
+    {
+        $_SESSION['notifications'] = $notifications;
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
 
     $sql = 'UPDATE products
             SET sort_id = :sort_id,
@@ -36,17 +32,17 @@ if (!empty($_POST))
 
     $updateProduct = $db->prepare($sql);
     $updateProduct->execute([
-        'id' => $id,
-        'sort_id' => $sort_id,
-        'category_id' => $category_id,
-        'title' => $title,
-        'slug' => $slug,
-        'company' => $company,
-        'count' => $count,
-        'price' => $price,
-        'description' => $description,
-        'characteristic' => $characteristic,
-        'status' => $status
+        'id' => (int) $_POST['id'],
+        'sort_id' => $_POST['sort_id'],
+        'category_id' => $_POST['category_id'],
+        'title' => $_POST['title'],
+        'slug' => latinize($_POST['title']),
+        'company' => $_POST['company'],
+        'count' => $_POST['count'],
+        'price' => $_POST['price'],
+        'description' => $_POST['description'],
+        'characteristic' => $_POST['characteristic'],
+        'status' => $_POST['status']
     ]);
 
     header('Location: ' . BASE_URL . '/admin/products/index.php');
