@@ -33,16 +33,16 @@ if (!empty($_POST))
     $updateProduct = $db->prepare($sql);
     $updateProduct->execute([
         'id' => (int) $_POST['id'],
-        'sort_id' => $_POST['sort_id'],
-        'category_id' => $_POST['category_id'],
+        'sort_id' => (int) $_POST['sort_id'],
+        'category_id' => (int) $_POST['category_id'],
         'title' => $_POST['title'],
         'slug' => latinize($_POST['title']),
         'company' => $_POST['company'],
-        'count' => $_POST['count'],
-        'price' => $_POST['price'],
+        'count' => (int) $_POST['count'],
+        'price' => (int) $_POST['price'],
         'description' => $_POST['description'],
         'characteristic' => $_POST['characteristic'],
-        'status' => $_POST['status']
+        'status' => (int) $_POST['status']
     ]);
 
     header('Location: ' . BASE_URL . '/admin/products/index.php');

@@ -11,4 +11,4 @@ define('VIEW_ROOT', APP_ROOT . '/views');
 $db = new PDO('mysql:host=localhost;dbname=mobistore', 'root', 'bireki');
 
 require 'functions.php';
-require 'variables.php';
+require 'global.php';

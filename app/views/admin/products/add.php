@@ -2,6 +2,8 @@
   
   <h2>Add Product</h2>
 
+  <?php require VIEW_ROOT . '/templates/alerts.php'; ?>
+
   <form action="<?= BASE_URL ?>/admin/products/add.php" method="POST" enctype='multipart/form-data'>
     <div class="form-group">
       <label for="title">Title</label>

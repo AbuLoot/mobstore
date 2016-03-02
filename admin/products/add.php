@@ -4,6 +4,19 @@ require '../../app/start.php';
 
 if (!empty($_POST))
 {
+    $notifications = validate($_POST, [
+        'category_id' => 'required',
+        'title' => 'required|length-min:3|length-max:80'
+    ]);
+
+    if (count($notifications) > 0)
+    {
+        $_SESSION['notifications'] = $notifications;
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+
     $image = '';
     $images = [];
 
@@ -65,35 +78,24 @@ if (!empty($_POST))
         }
     }
 
-    $title = $_POST['title'];
-    $slug = latinize($title);
-    $category_id = $_POST['category_id'];
-    $company = $_POST['company'];
-    $count = $_POST['count'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
-    $characteristic = $_POST['characteristic'];
-    $status = $_POST['status'];
-
-    $sql = "INSERT INTO products (slug, title, image, images, `path`, category_id, company, count, price, description, characteristic, status)
-            VALUES (:slug, :title, :image, :images, :path, :category_id, :company, :count, :price, :description, :characteristic, :status)";
+    $sql = "INSERT INTO products (title, slug, image, images, `path`, category_id, company, count, price, description, characteristic, status)
+            VALUES (:title, :slug, :image, :images, :path, :category_id, :company, :count, :price, :description, :characteristic, :status)";
 
     $insertProduct = $db->prepare($sql);
 
     $insertProduct->execute([
-        'slug' => $slug,
-        'title' => $title,
+        'title' => $_POST['title'],
+        'slug' => latinize($_POST['title']),
         'image' => $image,
         'images' => serialize($images),
         'path' => $dir_images,
-        'category_id' => $category_id,
-        'title' => $title,
-        'company' => $company,
-        'count' => $count,
-        'price' => $price,
-        'description' => $description,
-        'characteristic' => $characteristic,
-        'status' => $status
+        'category_id' => (int) $_POST['category_id'],
+        'company' => $_POST['company'],
+        'count' => (int) $_POST['count'],
+        'price' => (int) $_POST['price'],
+        'description' => $_POST['description'],
+        'characteristic' => $_POST['characteristic'],
+        'status' => (int) $_POST['status']
     ]);
 
     header('Location: ' . BASE_URL . '/admin/products/index.php');
