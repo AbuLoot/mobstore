@@ -9,7 +9,7 @@
     <?php foreach ($products as $product) : ?>
       <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
-          <img src="<?= BASE_URL.'/uploads/'.$product['path'].'/'.$product['image'] ?>" alt="...">
+          <a href="<?= BASE_URL.'/product.php?category_id='.$category['id'].'&id='.$product['id'] ?>"><img src="<?= BASE_URL.'/uploads/'.$product['path'].'/'.$product['image'] ?>" alt="..."></a>
           <div class="caption">
             <h4><a href="<?= BASE_URL.'/product.php?category_id='.$category['id'].'&id='.$product['id'] ?>"><?= $product['title'] ?></a></h4>
             <div class="btn-group btn-group-justified">

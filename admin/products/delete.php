@@ -10,9 +10,7 @@ if (isset($_GET['id']))
 	        WHERE id = :id';
 
 	$product = $db->prepare($sql);
-
 	$product->execute(['id' => $_GET['id']]);
-
 	$product = $product->fetch(PDO::FETCH_ASSOC);
 
 	$images = unserialize($product['images']);
@@ -39,8 +37,8 @@ if (isset($_GET['id']))
 	$sql = 'DELETE FROM products
 			WHERE id = :id';
 
-	$deleteCategory = $db->prepare($sql);
-	$deleteCategory->execute(['id' => $_GET['id']]);
+	$deleteProduct = $db->prepare($sql);
+	$deleteProduct->execute(['id' => $_GET['id']]);
 }
 
 header('Location: ' . BASE_URL . '/admin/products/index.php');

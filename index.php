@@ -20,4 +20,4 @@ $sql = "SELECT *
 
 $new_products = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-require VIEW_ROOT . '/home.php';
+require VIEW_ROOT . '/main.php';

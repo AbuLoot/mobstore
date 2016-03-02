@@ -12,8 +12,7 @@ else
 	$category_id = $_GET['category_id'];
 
 	$sql = "SELECT * FROM categories
-			WHERE id = :id
-			LIMIT 1";
+			WHERE id = :id";
 
 	$category = $db->prepare($sql);
 	$category->execute(['id' => $category_id]);

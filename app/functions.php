@@ -18,7 +18,25 @@ function get_submenu($db, $section_id)
     return $categories;
 }
 
-function validate_data($text, $min = 3, $max = 80)
+function get_cetegory_title($db, $category_id)
+{
+    $sql = 'SELECT title
+            FROM categories
+            WHERE id = :category_id';
+
+    $category = $db->prepare($sql);
+    $category->execute(['category_id' => $category_id]);
+    $category = $category->fetch(PDO::FETCH_ASSOC);
+
+    return $category['title'];
+}
+
+function clear_data($text)
+{
+    return trim(strip_tags($text));
+}
+
+/*function validate_data($text, $min = 3, $max = 80)
 {
     $notifications = [];
 
@@ -36,10 +54,63 @@ function validate_data($text, $min = 3, $max = 80)
     {
         $notifications['long_value'] = 'Value may not be greater than '.$max;
     }
-    else
+
+    return $notifications;
+}
+*/
+function validate($input, $rules)
+{
+    foreach ($rules as $title => $rule)
     {
-        return $text;
-        exit();
+        $check = explode('|', $rule);
+
+        foreach ($check as $pravilo)
+        {
+            if (strpos('min', $pravilo))
+                list($pravilo, $min) = explode(':', $pravilo);
+
+            if (strpos('max', $pravilo))
+                list($pravilo, $max) = explode(':', $pravilo);
+
+            switch ($pravilo)
+            {
+                case 'required':
+                    if (empty($input[$title]))
+                        $notifications['empty_value'] = 'Value must not be empty';
+                    break;
+                case 'integer':
+                    if (!is_int($input[$title]))
+                        $notifications['not_integer'] = 'Value must be integer';
+                    break;
+                case 'min':
+                    if (strlen($input[$title]) < $min)
+                        $notifications['short_value'] = 'Value must not be less than '.$min;
+                    break;
+                case 'max':
+                    if (strlen($input[$title]) > $max)
+                        $notifications['long_value'] = 'Value may not be greater than '.$max;
+                    break;
+            }
+        }
+    }
+
+    exit();
+
+    $notifications = [];
+
+    $text = trim(strip_tags($text));
+
+    if (empty($text))
+    {
+        $notifications['empty_value'] = 'Value must not be empty';
+    }
+    elseif (strlen($text) < $min)
+    {
+        $notifications['short_value'] = 'Value must not be less than '.$min;
+    }
+    elseif (strlen($text) > $max)
+    {
+        $notifications['long_value'] = 'Value may not be greater than '.$max;
     }
 
     return $notifications;

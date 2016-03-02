@@ -10,8 +10,13 @@
     <div class="form-group">
       <label for="categories">Categories</label>
       <select class="form-control" name="category_id" id="categories">
-        <?php foreach ($categories as $category) : ?>
-          <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
+        <?php foreach ($section as $item) : ?>
+          <optgroup label="<?= $item['title'] ?>">
+            <?php $categories = get_submenu($db, $item['id']); ?>
+            <?php foreach ($categories as $category) : ?>
+              <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
+            <?php endforeach; ?>
+          </optgroup>
         <?php endforeach; ?>
       </select>
     </div>

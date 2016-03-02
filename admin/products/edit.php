@@ -4,6 +4,11 @@ require '../../app/start.php';
 
 if (!empty($_POST))
 {
+    $notifications = validate($_POST, [
+        'category_id' => 'required|integer',
+        'title' => 'required|3|80'
+    ]);
+
     $id = $_POST['id'];
     $sort_id = $_POST['sort_id'];
     $category_id = $_POST['category_id'];
@@ -19,8 +24,8 @@ if (!empty($_POST))
     $sql = 'UPDATE products
             SET sort_id = :sort_id,
                 category_id = :category_id,
-                slug = :slug,
                 title = :title,
+                slug = :slug,
                 company = :company,
                 count = :count,
                 price = :price,
@@ -34,9 +39,8 @@ if (!empty($_POST))
         'id' => $id,
         'sort_id' => $sort_id,
         'category_id' => $category_id,
+        'title' => $title,
         'slug' => $slug,
-        'title' => $title,
-        'title' => $title,
         'company' => $company,
         'count' => $count,
         'price' => $price,

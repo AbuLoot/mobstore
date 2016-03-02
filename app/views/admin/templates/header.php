@@ -8,7 +8,6 @@
 
     <link href="<?= BASE_URL ?>/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= BASE_URL ?>/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="<?= BASE_URL ?>/bower_components/bootstrap/dist/css/styles.css" rel="stylesheet">
 
     <?php if (isset($scripts)) : ?>
       <?php foreach ($scripts as $script) : ?>

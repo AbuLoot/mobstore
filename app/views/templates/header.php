@@ -51,7 +51,7 @@
           <br>
           <form action="<?= BASE_URL ?>/search.php" method="get">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" class="form-control" name="keywords" placeholder="Search">
               <span class="input-group-btn">
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
               </span>
@@ -91,31 +91,14 @@
             <?php foreach ($section as $key => $item) : ?>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $item['title'] ?> <span class="caret"></span></a>
-                <?php $categories = get_submenu($db, $item['id']); ?>
+                <?php $categories_menu = get_submenu($db, $item['id']); ?>
                 <ul class="dropdown-menu">
-                  <?php foreach ($categories as $category) : ?>
-                    <li><a href="<?= BASE_URL ?>/category.php?slug=<?= $category['slug'] ?>"><?= $category['title'] ?></a></li>
+                  <?php foreach ($categories_menu as $category_item) : ?>
+                    <li><a href="<?= BASE_URL ?>/category.php?slug=<?= $category_item['slug'] ?>"><?= $category_item['title'] ?></a></li>
                   <?php endforeach; ?>
                 </ul>
               </li>
             <?php endforeach; ?>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Смартфоны <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">iPhone</a></li>
-                <li><a href="#">Samsung</a></li>
-                <li><a href="#">HTC</a></li>
-                <li><a href="#">NOKIA</a></li>
-                <li><a href="#">Lenova</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Планшеты <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">iPad</a></li>
-                <li><a href="#">Samsung</a></li>
-              </ul>
-            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Аксессуары <span class="caret"></span></a>
               <ul class="dropdown-menu">

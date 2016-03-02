@@ -8,31 +8,26 @@
 
   <div class="row">
     <div class="col-md-6">
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div id="carousel-images" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner" role="listbox">
-          <div class="item active">
-            <div class="thumbnail">
-              <img src="bower_components/bootstrap/dist/img/SmartPhones/Apple/1.jpg" class="img-responsive">
+          <?php $images = unserialize($product['images']); ?>
+          <?php foreach ($images as $key => $image) : ?>
+            <div class="item <?php if ($key == 0) echo 'active'; ?>">
+              <div class="thumbnail">
+                <img src="<?= BASE_URL.'/uploads/'.$product['path'].'/'.$image['image'] ?>" class="img-responsive">
+              </div>
             </div>
-          </div>
-          <div class="item">
-            <div class="thumbnail">
-              <img src="bower_components/bootstrap/dist/img/SmartPhones/Apple/2.jpg" class="img-responsive">
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
       </div>
       <ol class="list-inline">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="col-md-2 active">
-          <a href="#" class="thumbnail">
-            <img src="bower_components/bootstrap/dist/img/SmartPhones/Apple/1.jpg" class="img-responsive">
-          </a>
-        </li>
-        <li data-target="#carousel-example-generic" data-slide-to="1" class="col-md-2">
-          <a href="#" class="thumbnail">
-            <img src="bower_components/bootstrap/dist/img/SmartPhones/Apple/2.jpg" class="img-responsive">
-          </a>
-        </li>
+        <?php foreach ($images as $key => $image) : ?>
+          <li data-target="#carousel-images" data-slide-to="<?= $key ?>" class="col-md-2 <?php if ($key == 0) echo 'active'; ?>">
+            <a href="#" class="thumbnail">
+              <img src="<?= BASE_URL.'/uploads/'.$product['path'].'/'.$image['mini_image'] ?>" class="img-responsive">
+            </a>
+          </li>
+        <?php endforeach; ?>
       </ol>
     </div>
     <div class="col-md-6">

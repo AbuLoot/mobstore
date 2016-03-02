@@ -4,7 +4,7 @@ require '../../app/start.php';
 
 if (!empty($_POST))
 {
-    $image = NULL;
+    $image = '';
     $images = [];
 
     $time = getdate();
@@ -75,7 +75,7 @@ if (!empty($_POST))
     $characteristic = $_POST['characteristic'];
     $status = $_POST['status'];
 
-    $sql = "INSERT INTO products (slug, title, image, images, path, category_id, company, count, price, description, characteristic, status)
+    $sql = "INSERT INTO products (slug, title, image, images, `path`, category_id, company, count, price, description, characteristic, status)
             VALUES (:slug, :title, :image, :images, :path, :category_id, :company, :count, :price, :description, :characteristic, :status)";
 
     $insertProduct = $db->prepare($sql);
@@ -100,9 +100,9 @@ if (!empty($_POST))
 }
 
 $sql = 'SELECT id, slug, title
-        FROM categories';
+        FROM section';
 
-$categories = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+$section = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 $scripts = ['tinymce.php'];
 

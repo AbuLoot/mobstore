@@ -3,13 +3,13 @@
   <!-- Slide -->
   <div class="jumbotron">
     <h1>MobiStore</h1>
-    <p>Магазин телефонов</p>
+    <p>Online electronics store</p>
   </div>
 
   <!-- Hot products -->
   <div class="row">
     <div class="col-md-9">
-      <h3><span class="glyphicon glyphicon-star"></span> Популярное</h3>
+      <h3><span class="glyphicon glyphicon-star"></span> Popular</h3>
     </div>
     <div class="col-md-3">
       <h3 class="btn-group pull-right">
@@ -32,9 +32,9 @@
             <?php foreach ($hot_products as $hot_product) : ?>
             <div class="col-sm-6 col-md-3">
               <div class="thumbnail">
-                <img src="<?= BASE_URL.'/uploads/'.$hot_product['path'].'/'.$hot_product['image'] ?>" alt="...">
+                <a href="<?= BASE_URL.'/product.php?category_id='.$hot_product['category_id'].'&id='.$hot_product['id'] ?>"><img src="<?= BASE_URL.'/uploads/'.$hot_product['path'].'/'.$hot_product['image'] ?>" alt="..."></a>
                 <div class="caption">
-                  <h4><a href="<?= BASE_URL.'/product.php?category_id='.$category['id'].'&id='.$hot_product['id'] ?>"><?= $hot_product['title'] ?></a></h4>
+                  <h4><a href="<?= BASE_URL.'/product.php?category_id='.$hot_product['category_id'].'&id='.$hot_product['id'] ?>"><?= $hot_product['title'] ?></a></h4>
                   <div class="btn-group btn-group-justified">
                     <a href="#" class="btn btn-default" role="button"><?= $hot_product['price'] ?> тг</a>
                     <a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> Купить</a>
@@ -52,7 +52,7 @@
   <!-- New products -->
   <div class="row">
     <div class="col-md-9">
-      <h3><span class="glyphicon glyphicon-time"></span> Новые</h3>
+      <h3><span class="glyphicon glyphicon-time"></span> New</h3>
     </div>
     <div class="col-md-3">
       <h3 class="btn-group pull-right">
@@ -75,7 +75,7 @@
             <?php foreach ($new_products as $new_product) : ?>
             <div class="col-sm-6 col-md-3">
               <div class="thumbnail">
-                <img src="<?= BASE_URL.'/uploads/'.$new_product['path'].'/'.$new_product['image'] ?>" alt="...">
+               <a href="<?= BASE_URL.'/product.php?category_id='.$category['id'].'&id='.$hot_product['id'] ?>"><img src="<?= BASE_URL.'/uploads/'.$new_product['path'].'/'.$new_product['image'] ?>" alt="..."></a>
                 <div class="caption">
                   <h4><a href="<?= BASE_URL.'/product.php?category_id='.$category['id'].'&id='.$hot_product['id'] ?>"><?= $new_product['title'] ?></a></h4>
                   <div class="btn-group btn-group-justified">

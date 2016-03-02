@@ -2,7 +2,7 @@
   
   <h2>Edit Product</h2>
 
-  <form action="<?= BASE_URL ?>/admin/products/edit.php" method="POST" enctype='multipart/form-data'>
+  <form action="<?= BASE_URL ?>/admin/products/edit.php" method="POST">
     <input type="hidden" class="form-control" name="id" value="<?= e($product['id']) ?>">
     <div class="form-group">
       <label for="title">Title</label>
@@ -11,12 +11,17 @@
     <div class="form-group">
       <label for="categories">Categories</label>
       <select class="form-control" name="category_id" id="categories">
-        <?php foreach ($categories as $category) : ?>
-          <?php if ($category['id'] == $product['category_id']) : ?>
-            <option value="<?= $category['id'] ?>" checked><?= $category['title'] ?></option>
-          <?php else: ?>
-            <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
-          <?php endif; ?>
+        <?php foreach ($section as $item) : ?>
+          <optgroup label="<?= $item['title'] ?>">
+            <?php $categories = get_submenu($db, $item['id']); ?>
+            <?php foreach ($categories as $category) : ?>
+              <?php if ($category['id'] == $product['category_id']) : ?>
+                <option value="<?= $category['id'] ?>" selected><?= $category['title'] ?></option>
+              <?php else: ?>
+                <option value="<?= $category['id'] ?>"><?= $category['title'] ?></option>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </optgroup>
         <?php endforeach; ?>
       </select>
     </div>
