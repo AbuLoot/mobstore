@@ -4,12 +4,17 @@ require '../../app/start.php';
 
 if (!empty($_POST))
 {
-	$id = $_POST['id'];
-	$title = $_POST['title'];
-	$slug = (!empty($_POST['slug'])) ? $_POST['slug'] : latinize($_POST['title']);
-	$meta_title = $_POST['meta_title'];
-	$meta_description = $_POST['meta_description'];
-	$content = $_POST['content'];
+    $notifications = validate($_POST, [
+        'title' => 'length-min:3|length-max:30'
+    ]);
+
+    if (count($notifications) > 0)
+    {
+        $_SESSION['notifications'] = $notifications;
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
 
 	$sql = 'UPDATE pages
 			SET slug = :slug,
@@ -21,12 +26,12 @@ if (!empty($_POST))
 
 	$updatePage = $db->prepare($sql);
 	$updatePage->execute([
-		'id' => $id,
-		'slug' => $slug,
-		'title' => $title,
-		'meta_title' => $meta_title,
-		'meta_description' => $meta_description,
-		'content' => $content
+        'id' => (int) $_POST['id'],
+		'title' => $_POST['title'],
+		'slug' => (!empty($_POST['slug'])) ? $_POST['slug'] : latinize($_POST['title']),
+		'meta_title' => $_POST['meta_title'],
+		'meta_description' => $_POST['meta_description'],
+		'content' => $_POST['content'],
 	]);
 
 	header('Location: ' . BASE_URL . '/admin/pages/index.php');

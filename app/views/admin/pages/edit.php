@@ -2,6 +2,8 @@
   
   <h2>Edit Page</h2>
 
+  <?php require VIEW_ROOT . '/templates/alerts.php'; ?>  
+
   <form action="<?= BASE_URL ?>/admin/pages/edit.php" method="POST">
     <div class="form-group">
       <label for="title">Title</label>
